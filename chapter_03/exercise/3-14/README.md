@@ -1,0 +1,1 @@
+Add solution but don't want to implement doubly linked list
