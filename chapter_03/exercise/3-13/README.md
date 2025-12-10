@@ -1,0 +1,1 @@
+Stuck a little bit by how to determine the left and right node. Solved by drawing a graph on paper.
