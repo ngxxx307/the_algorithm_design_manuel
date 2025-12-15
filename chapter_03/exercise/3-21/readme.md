@@ -1,0 +1,1 @@
+Since the question does not require the output tree to be balanced. We can simply find the smallest element in S2 (leftmost), then attach the root of S1 as the left node of the smallest element in S2.
