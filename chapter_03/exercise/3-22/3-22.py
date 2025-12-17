@@ -17,7 +17,7 @@ class binary_tree:
         if not self.root:
             self.root = node
             return
-        curr: TreeNode = self.root
+        curr: TreeNode | None = self.root
 
         while curr:
             curr.n = curr.n + 1
@@ -59,6 +59,8 @@ class binary_tree:
         if right_height - left_height > 1:
             new_parent = node.right
 
+            if not new_parent:
+                return 0
             # Wire up new parent and node parent
             new_parent.parent = node.parent
             if node.parent:
@@ -89,7 +91,8 @@ class binary_tree:
             return node.subtree_height
         if left_height - right_height > 1:
             new_parent = node.left
-
+            if not new_parent:
+                return 0
             new_parent.parent = node.parent
             if node.parent:
                 node.parent.left = new_parent
@@ -112,6 +115,7 @@ class binary_tree:
             right_n = new_parent.right.n if new_parent.right else 0
             new_parent.n = left_n + right_n + 1
             return node.subtree_height
+        return 0
 
     def find_left_most(self, curr: TreeNode) -> TreeNode:
         while curr.left:
@@ -127,7 +131,6 @@ class binary_tree:
         curr = self.root
         left = 0
         right = 0
-        target = curr.n / 2
 
         while curr:
             left_n = curr.left.n if curr.left else 0
@@ -137,19 +140,19 @@ class binary_tree:
             if diff == 0:
                 return curr.val
             if diff == 1:
-                temp = self.find_right_most(curr.left)
-                return (curr.val + temp.val) / 2
+                if curr.left:
+                    Next = self.find_right_most(curr.left)
+                    return (curr.val + Next.val) / 2
             if diff == -1:
-                temp = self.find_left_most(curr.right)
-                return (curr.val + temp.val) / 2
+                if curr.right:
+                    prev = self.find_left_most(curr.right)
+                    return (curr.val + prev.val) / 2
             if diff > 1:
                 right = right_n + 1
                 curr = curr.left
             elif diff < -1:
                 left = left_n + 1
                 curr = curr.right
-        print(f"final curr:{curr.val}")
-        print("left and right:", left, right)
 
 
 def print_tree(node: TreeNode, level=0, prefix="Root:"):
@@ -182,5 +185,5 @@ if __name__ == "__main__":
     bt.insert(TreeNode(13))
     bt.insert(TreeNode(14))
 
-    print_tree(bt.root)
-    print(bt.median())
+    if bt.root:
+        print_tree(bt.root)
