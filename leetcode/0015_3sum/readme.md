@@ -1,0 +1,1 @@
+Thought need three pointers and cannot solve the problem. Read the solution directly
