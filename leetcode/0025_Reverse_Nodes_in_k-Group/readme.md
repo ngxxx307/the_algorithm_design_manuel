@@ -1,0 +1,1 @@
+Add ugly solution. Can avoid the double reverse completely if look ahead
