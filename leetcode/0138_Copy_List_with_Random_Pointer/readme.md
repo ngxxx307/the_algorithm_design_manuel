@@ -1,0 +1,1 @@
+The space O(n) solution is straight forward
