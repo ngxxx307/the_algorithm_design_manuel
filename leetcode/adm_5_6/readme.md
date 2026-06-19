@@ -1,0 +1,1 @@
+stuck at finding the condition. Solved by visualizing it
