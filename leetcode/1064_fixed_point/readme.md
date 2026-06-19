@@ -1,0 +1,1 @@
+stuck at hanlding the 0 issue (use return x if x else -1)
