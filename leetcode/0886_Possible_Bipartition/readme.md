@@ -1,0 +1,1 @@
+solving is trivial because i have already read The algorithm design manual
